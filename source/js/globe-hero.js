@@ -20,7 +20,7 @@
   /* ---------------- 配置区 ---------------- */
 
   var NAV_ITEMS = [
-    { label: '文章',   href: '/archives/',        tx: 0.16, ty: 0.20 },
+    { label: '归档',   href: '/archives/',        tx: 0.16, ty: 0.20 },
     { label: '旅行',   href: '/categories/旅行/', tx: 0.40, ty: 0.30 },
     { label: '成长',   href: '/categories/成长/', tx: 0.18, ty: 0.46 },
     { label: '安利',   href: '/categories/安利/', tx: 0.42, ty: 0.58 },
