@@ -20,6 +20,19 @@ html.globe-home #page-header #scroll-down {
   display: none;
 }
 
+/* 首页 = 只有星球，一屏到底：隐藏文章列表、侧栏和页脚，并禁止滚动。
+   文章入口走「文章」节点（/archives/） */
+html.globe-home #content-inner,
+html.globe-home #footer {
+  display: none;
+}
+
+html.globe-home,
+html.globe-home body {
+  height: 100%;
+  overflow: hidden;
+}
+
 #globe-hero {
   position: relative;
   width: 100%;
