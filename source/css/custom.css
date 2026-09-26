@@ -27,6 +27,12 @@ html.globe-home #footer {
   display: none;
 }
 
+/* 开屏纯净模式：顶部导航栏、右下角悬浮按钮也全部隐藏，首页只剩动效和节点 */
+html.globe-home #nav,
+html.globe-home #rightside {
+  display: none;
+}
+
 html.globe-home,
 html.globe-home body {
   height: 100%;
