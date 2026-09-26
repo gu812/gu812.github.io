@@ -30,8 +30,8 @@
   var MIN_SEPARATION = 110; // 节点间最小屏幕距离（px），防止挤在一起
 
   var VANTA_OPTIONS = {
-    color: 0xff3f81,           // 网格颜色（粉）
-    backgroundColor: 0x23153c, // 背景色（深紫）
+    color: 0xd6cfc4,           // 网格颜色（暖米白）
+    backgroundColor: 0x0e0d0b, // 背景色（暖黑）
     size: 1.00                 // 地球仪大小
   };
 
