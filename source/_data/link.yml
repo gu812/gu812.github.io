@@ -1,0 +1,9 @@
+# 友情链接数据（Butterfly flink）
+# 每条：name 名称 / link 链接 / avatar 头像 / descr 一句话介绍
+- class_name: 小伙伴们
+  class_desc: 欢迎交换友链～
+  link_list:
+    - name: gu812 の 小站
+      link: https://gu812.github.io
+      avatar: https://github.com/gu812.png
+      descr: 今天也是元气满满的一天呢 ✨

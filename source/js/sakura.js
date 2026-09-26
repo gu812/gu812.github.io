@@ -5,6 +5,9 @@
 (function () {
   'use strict';
 
+  // 首页 hero 已换成星网导航（Vanta NET）背景，樱花不在首页飘落，避免视觉冲突
+  if (location.pathname === '/' || location.pathname === '/index.html') return;
+
   var CONFIG = {
     count: 25,            // 花瓣数量（手机端自动减半）
     minSize: 8,           // 花瓣最小尺寸(px)

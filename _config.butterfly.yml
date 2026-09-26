@@ -14,6 +14,7 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
+  友链: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
 
 # ------------------------------------------------------------
@@ -53,8 +54,15 @@ menu:
 # 想关掉特效：把下面 bottom 里的那行删掉或注释掉即可
 # ------------------------------------------------------------
 inject:
+  head:
+    # 自定义样式：首页星网 hero、页面转场、想法时间线
+    - <link rel="stylesheet" href="/css/custom.css">
+    # 首页渲染前给 <html> 加 globe-home，隐藏 Butterfly 顶部 banner（菜单保留）
+    - <script>if(location.pathname==='/'||location.pathname==='/index.html')document.documentElement.classList.add('globe-home')</script>
   bottom:
     - <script src="/js/sakura.js" defer></script>
+    # 星网导航 hero：脚本自身只在首页初始化（three.js/vanta 也只在首页才动态加载）
+    - <script src="/js/globe-hero.js" defer></script>
 
 # ------------------------------------------------------------
 # 页脚
