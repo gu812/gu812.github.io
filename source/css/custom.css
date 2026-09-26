@@ -106,29 +106,29 @@ html.globe-home body {
   transform: scale(1.6);
 }
 
-/* 悬停浮现的模块名称 */
+/* 节点名称标签：常驻显示，悬停时高亮强调 */
 .nav-node .label {
   position: absolute;
   left: 14px;
   top: 0;
-  transform: translateY(-50%) translateX(-6px);
+  transform: translateY(-50%);
   padding: 4px 12px;
   border-radius: 14px;
-  background: rgba(35, 21, 60, .85);
-  border: 1px solid rgba(255, 107, 168, .6);
+  background: rgba(35, 21, 60, .75);
+  border: 1px solid rgba(255, 107, 168, .45);
   color: #ffd6e7;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: 2px;
   white-space: nowrap;
-  opacity: 0;
-  transition: opacity .25s ease, transform .25s ease;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
   pointer-events: none;
 }
 
 .nav-node:hover .label {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  background: rgba(35, 21, 60, .95);
+  border-color: rgba(255, 107, 168, .9);
+  transform: translateY(-50%) translateX(4px);
 }
 
 /* 点击涟漪 */
