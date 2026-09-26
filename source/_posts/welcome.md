@@ -8,27 +8,27 @@ categories:
 cover:
 ---
 
-欢迎来到 **gu812 の 小站**！🎉
+欢迎来到 **gu812**。
 
-这是本博客的第一篇文章。以后会在这里记录代码折腾、学习笔记、追番感想和各种碎碎念。
+这是这个博客的第一篇文章。以后会在这里记录旅行、成长、影音书籍的安利，以及偶尔冒出来的想法。
 
 ## 这个小站是怎么搭起来的
 
 - **博客框架**：[Hexo](https://hexo.io/) —— 快速、简洁的静态博客框架
-- **主题**：[Butterfly](https://butterfly.js.org/) —— 颜值超高的二次元友好主题
-- **托管**：GitHub Pages —— 免费的静态网站托管
-- **自动部署**：GitHub Actions —— push 到 main 分支后自动构建发布
+- **主题**：[Butterfly](https://butterfly.js.org/)
+- **托管**：GitHub Pages
+- **自动部署**：GitHub Actions，push 到 main 分支后自动构建发布
 
-整个流程就是：本地写 Markdown → `git push` → GitHub Actions 自动跑 `hexo generate` → 发布到 GitHub Pages。写作体验拉满 ✨
+写作流程：本地写 Markdown → `git push` → 自动发布。
 
-## 小彩蛋
+## 首页的星球
 
-注意到页面上飘落的樱花花瓣了吗？🌸 那是用 canvas 手写的特效（`source/js/sakura.js`），通过 Butterfly 的 `inject` 配置注入到每个页面。想要更多花瓣或者换个颜色，改改配置就行。
+首页的星网导航基于 [Vanta.js](https://www.vantajs.com/) 的 GLOBE 效果：网格上的六个发光节点分别通向归档、旅行、成长、安利、想法和关于我。节点是实时投影到网格交点上的 DOM 元素，会随着网格一起漂浮。
 
 ## 接下来
 
 - 写更多的文章
-- 换上自己喜欢的动漫头图和封面
-- 慢慢把这个小站装修成喜欢的样子
+- 逐步重构各个分页面
+- 把这个小站打磨成喜欢的样子
 
-敬请期待～
+敬请期待。

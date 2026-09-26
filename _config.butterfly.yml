@@ -49,10 +49,6 @@ menu:
 # ------------------------------------------------------------
 
 # ------------------------------------------------------------
-# 樱花花瓣飘落特效 🌸
-# 通过 inject 把 source/js/sakura.js 注入到每个页面底部
-# 想关掉特效：把下面 bottom 里的那行删掉或注释掉即可
-# ------------------------------------------------------------
 inject:
   head:
     # 自定义样式：首页星网 hero、页面转场、想法时间线
@@ -60,7 +56,6 @@ inject:
     # 首页渲染前给 <html> 加 globe-home，隐藏 Butterfly 顶部 banner（菜单保留）
     - <script>if(location.pathname==='/'||location.pathname==='/index.html')document.documentElement.classList.add('globe-home')</script>
   bottom:
-    - <script src="/js/sakura.js" defer></script>
     # 星网导航 hero：脚本自身只在首页初始化（three.js/vanta 也只在首页才动态加载）
     - <script src="/js/globe-hero.js" defer></script>
 
@@ -71,7 +66,7 @@ footer:
   owner:
     enable: true
     since: 2026
-  custom_text: 'Powered by <a href="https://hexo.io/">Hexo</a> | Theme <a href="https://butterfly.js.org/">Butterfly</a> | 二次元浓度满满 ✨'
+  custom_text: 'Powered by <a href="https://hexo.io/">Hexo</a> | Theme <a href="https://butterfly.js.org/">Butterfly</a>'
 
 # ------------------------------------------------------------
 # 社交链接（按自己的账号修改，不想要哪行就删掉）
@@ -91,4 +86,4 @@ highlight_theme: mac
 # ------------------------------------------------------------
 error_404:
   enable: true
-  subtitle: '页面好像穿越到异世界了呢……'
+  subtitle: '这个页面不存在'

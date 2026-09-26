@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: gu812 の 小站
-subtitle: '二次元浓度检测中……今天也是元气满满的一天呢！✨'
-description: 'gu812 的个人博客：记录代码、生活与二次元的点点滴滴'
-keywords: gu812,博客,二次元,Hexo
+title: gu812
+subtitle: '记录、思考与分享'
+description: 'gu812 的个人博客：旅行、成长、安利与想法'
+keywords: gu812,博客,旅行,成长,影评
 author: gu812
 language: zh-CN
 timezone: 'Asia/Shanghai'
