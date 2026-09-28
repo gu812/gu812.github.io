@@ -1,0 +1,280 @@
+/* ============================================================
+   文章页极简排版（.post-minimal）
+   参考 Kit Langton "OpenCode Reloaded (light mode)"：Typographic / Minimal
+   暖白纸面 + 衬线正文 + 大号宽字距标题；金色 #d8ba78 仅点缀；无渐变
+   ============================================================ */
+
+/* ---------- 纸面 ---------- */
+#body-wrap.post {
+  background: #faf7f2;
+}
+
+/* 去掉文章页外层白卡（.layout > div:first-child 的 cardHover），内容直接躺在纸面上 */
+#body-wrap.post #content-inner.layout > #post.post-minimal {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 顶栏：素 bar，融进纸面，只留一根发丝线 */
+#body-wrap.post #page-header.not-top-img {
+  background: transparent;
+  border-bottom: 1px solid rgba(28, 26, 23, .07);
+}
+
+#body-wrap.post #page-header.not-top-img #nav {
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* ---------- 标题区 ---------- */
+#post.post-minimal #post-info.post-minimal-head {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 22px 44px;
+  text-align: center;
+}
+
+#post.post-minimal #post-info .post-title {
+  margin: 0;
+  color: #1c1a17;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  font-size: clamp(1.75rem, 4.2vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.55;
+  text-shadow: none;
+}
+
+/* 元信息一行：小字、弱色 */
+#post.post-minimal #post-info #post-meta {
+  margin-top: 20px;
+  color: rgba(28, 26, 23, .42);
+  font-size: 13px;
+  letter-spacing: .12em;
+}
+
+#post.post-minimal #post-info .post-minimal-meta-sep {
+  margin: 0 10px;
+  color: rgba(28, 26, 23, .22);
+}
+
+#post.post-minimal #post-info a.post-minimal-meta-cat {
+  color: rgba(28, 26, 23, .42);
+  text-decoration: none;
+}
+
+#post.post-minimal #post-info a.post-minimal-meta-cat:hover {
+  color: #b89b5e;
+}
+
+/* ---------- 正文 ---------- */
+#post.post-minimal #article-container.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 8px 22px 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  color: #262320;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+#post.post-minimal #article-container p {
+  margin: 0 0 1.4em;
+}
+
+/* 标题层级：衬线化、克制 */
+#post.post-minimal #article-container h2,
+#post.post-minimal #article-container h3,
+#post.post-minimal #article-container h4 {
+  margin: 2em 0 .9em;
+  padding-left: 0;
+  border-left: none;
+  color: #1c1a17;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+#post.post-minimal #article-container h2 {
+  font-size: 1.35em;
+}
+
+#post.post-minimal #article-container h3 {
+  font-size: 1.15em;
+}
+
+#post.post-minimal #article-container h2::before,
+#post.post-minimal #article-container h3::before,
+#post.post-minimal #article-container h4::before {
+  display: none; /* 去掉主题默认的标题装饰 */
+}
+
+/* 链接：金色点缀 + 下划线保证可读 */
+#post.post-minimal #article-container a {
+  color: #b89b5e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#post.post-minimal #article-container a:hover {
+  color: #d8ba78;
+}
+
+/* 引用：金色左边线 */
+#post.post-minimal #article-container blockquote {
+  margin: 1.6em 0;
+  padding: .2em 0 .2em 1.1em;
+  border-left: 2px solid #d8ba78;
+  background: transparent;
+  color: rgba(38, 35, 32, .72);
+}
+
+/* 列表 / 分隔线：克制 */
+#post.post-minimal #article-container ul,
+#post.post-minimal #article-container ol {
+  margin: 0 0 1.4em;
+  padding-left: 1.4em;
+}
+
+#post.post-minimal #article-container hr {
+  margin: 2.4em auto;
+  border: none;
+  border-top: 1px solid rgba(28, 26, 23, .12);
+}
+
+/* 行内代码 */
+#post.post-minimal #article-container code:not([class]) {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(28, 26, 23, .06);
+  color: #262320;
+  font-size: .88em;
+}
+
+/* 代码块：保留主题深色高亮，纸面上没问题 */
+#post.post-minimal #article-container .highlight {
+  border-radius: 8px;
+}
+
+/* 图片：轻微圆角，居中 */
+#post.post-minimal #article-container img {
+  border-radius: 6px;
+}
+
+/* ---------- 文尾：标签 / 版权 / 上下篇 ---------- */
+#post.post-minimal .post-copyright {
+  max-width: 680px;
+  margin: 2.5em auto 0;
+  padding: 1.2em 0 0;
+  border-top: 1px solid rgba(28, 26, 23, .1);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(28, 26, 23, .5);
+  font-size: 13px;
+}
+
+#post.post-minimal .tag_share {
+  max-width: 680px;
+  margin: 1.2em auto 0;
+  padding: 0;
+}
+
+/* 隐藏分享按钮，只留标签 */
+#post.post-minimal .tag_share > :not(.post-meta__tag-list) {
+  display: none;
+}
+
+#post.post-minimal .post-meta__tag-list a.post-meta__tags {
+  border: 1px solid rgba(28, 26, 23, .18);
+  border-radius: 12px;
+  background: transparent;
+  color: rgba(28, 26, 23, .55);
+  font-size: 12px;
+}
+
+#post.post-minimal .post-meta__tag-list a.post-meta__tags:hover {
+  border-color: #d8ba78;
+  background: transparent;
+  color: #b89b5e;
+}
+
+/* 上一篇 / 下一篇：极简双链 */
+#post.post-minimal #pagination.pagination-post {
+  display: flex;
+  gap: 16px;
+  max-width: 680px;
+  margin: 3em auto 0;
+  padding: 0 22px;
+}
+
+#post.post-minimal #pagination.pagination-post .pagination-related {
+  flex: 1;
+  padding: 14px 0;
+  border-top: 1px solid rgba(28, 26, 23, .14);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(28, 26, 23, .55);
+  text-align: left;
+}
+
+#post.post-minimal #pagination.pagination-post .pagination-related .cover {
+  display: none; /* 不要封面缩略图 */
+}
+
+#post.post-minimal #pagination.pagination-post .info-1 .info-item-1 {
+  color: rgba(28, 26, 23, .38);
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+
+#post.post-minimal #pagination.pagination-post .info-1 .info-item-2 {
+  margin-top: 4px;
+  color: #262320;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  font-size: 15px;
+}
+
+#post.post-minimal #pagination.pagination-post .info-2 {
+  display: none; /* 不要摘要 */
+}
+
+#post.post-minimal #pagination.pagination-post .pagination-related:hover {
+  background: transparent;
+}
+
+#post.post-minimal #pagination.pagination-post .pagination-related:hover .info-item-2 {
+  color: #b89b5e;
+}
+
+/* ---------- 评论区容器：窄栏对齐 ---------- */
+#post.post-minimal #post-comment,
+#post.post-minimal #comments {
+  max-width: 680px;
+  margin: 2.5em auto 0;
+  padding: 0 22px;
+}
+
+/* ---------- 移动端 ---------- */
+@media (max-width: 768px) {
+  #post.post-minimal #post-info.post-minimal-head {
+    padding: 72px 18px 32px;
+  }
+
+  #post.post-minimal #article-container.container {
+    padding: 4px 18px 0;
+    font-size: 16px;
+  }
+
+  #post.post-minimal #pagination.pagination-post {
+    flex-direction: column;
+    gap: 0;
+  }
+}

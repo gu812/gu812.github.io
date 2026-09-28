@@ -1,0 +1,12 @@
+//- 文章页极简标题区：大号宽字距标题（glitch 归位由 js/post-minimal.js 驱动）+ 一行弱色元信息
+#post-info.post-minimal-head
+  h1.post-title= page.title || _p('no_title')
+  #post-meta
+    - const cat0 = page.categories && page.categories.data && page.categories.data[0]
+    time.post-minimal-meta-date(datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))= date(page.date, config.date_format)
+    if cat0
+      span.post-minimal-meta-sep ·
+      a.post-minimal-meta-cat(href=url_for(cat0.path))= cat0.name
+    if theme.wordcount.enable && theme.wordcount.min2read
+      span.post-minimal-meta-sep ·
+      span.post-minimal-meta-read= min2read(page.content, {cn: 350, en: 160}) + ' ' + _p('post.min2read_unit')

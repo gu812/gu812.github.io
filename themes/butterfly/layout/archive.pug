@@ -1,0 +1,8 @@
+extends includes/layout.pug
+
+block content
+  include ./includes/mixins/postCardGrid.pug
+  #archive
+    .article-sort-title= `${_p('page.articles')} - ${getArchiveLength()}`
+    +postCardGrid(page.posts)
+    include includes/pagination.pug

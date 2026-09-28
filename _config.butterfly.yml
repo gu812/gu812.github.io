@@ -51,13 +51,37 @@ menu:
 # ------------------------------------------------------------
 inject:
   head:
-    # 自定义样式：首页星网 hero、页面转场、想法时间线
+    # 自定义样式：首页星网 hero、页面转场、想法时间线、卡片网格
     - <link rel="stylesheet" href="/css/custom.css">
+    # Noto Serif SC 自托管字体（文章页衬线正文用）
+    - <link rel="stylesheet" href="/fonts/noto-serif-sc/noto-serif-sc.css">
+    # 文章页极简排版（.post-minimal）
+    - <link rel="stylesheet" href="/css/post-minimal.css">
     # 首页渲染前给 <html> 加 globe-home，隐藏 Butterfly 顶部 banner（菜单保留）
     - <script>if(location.pathname==='/'||location.pathname==='/index.html')document.documentElement.classList.add('globe-home')</script>
   bottom:
     # 星网导航 hero：脚本自身只在首页初始化（three.js/vanta 也只在首页才动态加载）
     - <script src="/js/globe-hero.js" defer></script>
+    # 文章卡片变形交互（.morph-*）：作用于列表页 .post-card
+    - <script src="/js/morph-cards.js" defer></script>
+    # 文章页标题 glitch 归位：脚本自身只在文章页初始化
+    - <script src="/js/post-minimal.js?v=5" defer></script>
+
+# ------------------------------------------------------------
+# 侧栏：文章页极简排版独占中栏，不显示侧栏
+# ------------------------------------------------------------
+aside:
+  display:
+    post: false
+
+# ------------------------------------------------------------
+# 字数统计（文章页元信息的阅读时长用）
+# ------------------------------------------------------------
+wordcount:
+  enable: true
+  post_wordcount: false
+  min2read: true
+  total_wordcount: false
 
 # ------------------------------------------------------------
 # 页脚

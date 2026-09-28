@@ -1,0 +1,12 @@
+extends includes/layout.pug
+
+block content
+  if theme.category_ui == 'index'
+    include ./includes/mixins/indexPostUI.pug
+    +indexPostUI
+  else
+    include ./includes/mixins/postCardGrid.pug
+    #category
+      .article-sort-title= _p('page.category') + ' - ' + page.category
+      +postCardGrid(page.posts)
+      include includes/pagination.pug

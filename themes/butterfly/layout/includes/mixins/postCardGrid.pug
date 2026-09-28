@@ -1,0 +1,27 @@
+//- 文章卡片网格（归档页 / 分类页共用）
+//- 每张卡：封面区（无封面 → 深色占位 + 首字符）+ 标题 + 摘要
+//- 日期/分类以 data 属性挂在卡片上，由 morph-cards.js 渲染成交互 pill
+mixin postCardGrid(posts)
+  - const list = posts.data || posts
+  .post-card-grid
+    each article in list
+      - const link = article.link || article.path
+      - const title = article.title || _p('no_title')
+      - const desc = postDesc(article)
+      - const cat = article.categories && article.categories.data && article.categories.data[0]
+      article.post-card(data-href=url_for(link) data-date=date(article.date, config.date_format) data-cat=cat ? cat.name : '')
+        .post-card-cover
+          a.post-card-cover-link(href=url_for(link) title=title)
+            if article.cover
+              if article.cover_type === 'img'
+                img.post-card-cover-img(src=url_for(article.cover) alt=title onerror=`this.onerror=null;this.src='${url_for(theme.error_img.post_page)}'`)
+              else
+                .post-card-cover-color(style=`background: ${article.cover}`)
+            else
+              //- 无封面占位区：深色底 + 标题首字符（去标点）
+              .post-card-cover-empty
+                span.post-card-cover-char= String(title).replace(/[^\u4e00-\u9fa5\w]/g, '').charAt(0) || '·'
+        .post-card-body
+          a.post-card-title(href=url_for(link) title=title)= title
+          if desc
+            .post-card-excerpt!= desc
