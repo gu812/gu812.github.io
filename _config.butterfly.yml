@@ -66,13 +66,26 @@ inject:
     - <script src="/js/morph-cards.js" defer></script>
     # 文章页标题 glitch 归位：脚本自身只在文章页初始化
     - <script src="/js/post-minimal.js?v=5" defer></script>
+    # 分页面棱镜 banner + 开屏粒子标题：脚本自身只在分页面初始化
+    - <script src="/js/prism-banner.js" defer></script>
+    - <script src="/js/page-intro.js" defer></script>
 
 # ------------------------------------------------------------
-# 侧栏：文章页极简排版独占中栏，不显示侧栏
+# 侧栏：分页面侧栏在左且收窄，只保留最近文章/分类/标签；
+# 文章页极简排版独占中栏，不显示侧栏
 # ------------------------------------------------------------
 aside:
+  position: left
   display:
     post: false
+  card_author:
+    enable: false
+  card_announcement:
+    enable: false
+  card_archives:
+    enable: false
+  card_webinfo:
+    enable: false
 
 # ------------------------------------------------------------
 # 字数统计（文章页元信息的阅读时长用）

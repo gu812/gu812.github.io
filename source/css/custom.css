@@ -456,3 +456,75 @@ html.globe-home body {
 #post.post-minimal .post-title .tg-wash-row {
   display: block;
 }
+
+
+/* ============================================================
+   分页面外壳：棱镜 banner + 开屏粒子 + 左侧窄栏
+   ============================================================ */
+
+/* --- 棱镜 banner：黑底，canvas 铺满，标题压在上层 --- */
+#page-header.prism-banner {
+  background: #050505 !important;
+}
+
+#prism-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#page-header.prism-banner #page-site-info {
+  /* 标题先撤掉，只留三角动效；保留 DOM 供粒子开屏取文字 */
+  display: none;
+}
+
+#page-header.prism-banner.intro-running #page-site-info {
+  opacity: 0;
+}
+
+/* --- 开屏粒子 intro：全屏黑幕，JS 接管后淡出移除；
+       无 JS / 异常时 8s 后自动隐藏兜底 --- */
+#page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #050505;
+  animation: pageIntroFallback 0s linear 8s forwards;
+}
+
+#page-intro-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#page-intro.intro-done {
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+@keyframes pageIntroFallback {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* intro 期间锁定滚动 */
+html.intro-lock,
+html.intro-lock body {
+  overflow: hidden;
+}
+
+/* --- 侧栏收窄（左移由 aside.position: left 配置完成），卡片区让位 --- */
+@media (min-width: 900px) {
+  #aside-content {
+    width: 21%;
+  }
+
+  #content-inner.layout:not(.hide-aside) > div:first-child {
+    width: 77%;
+  }
+}

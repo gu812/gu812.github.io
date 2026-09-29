@@ -23,13 +23,26 @@ if !theme.disable_top_img && page.top_img !== false
     default
       - top_img = page.top_img || theme.default_top_img
 
-  if top_img !== false
+  //- 分页面（归档/分类/标签/普通页）：棱镜动效 banner 替代蓝色大图
+  if globalPageType === 'archive' || globalPageType === 'category' || globalPageType === 'tag' || globalPageType === 'page'
+    - top_img = 'prism'
+
+  if top_img === 'prism'
+    - headerClassName = 'not-home-page prism-banner'
+  else if top_img !== false
     - bg_img = getBgPath(top_img)
     - headerClassName = globalPageType === 'home' ? 'full_page' : globalPageType === 'post' ? 'post-bg' : 'not-home-page'
 
 header#page-header(class=`${headerClassName + isFixedClass}` style=bg_img)
   include ./nav.pug
-  if top_img !== false
+  if top_img === 'prism'
+    canvas#prism-canvas
+    #page-site-info
+      h1#site-title=page.title || page.tag || page.category
+    //- 开屏粒子标题的挂载点，脚本接管后移除；无 JS 时由 CSS 兜底淡出
+    #page-intro
+      canvas#page-intro-canvas
+  else if top_img !== false
     if globalPageType === 'post'
       include ./post-info.pug
     else if globalPageType === 'home'
