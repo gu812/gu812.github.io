@@ -1,0 +1,21 @@
+//- 目录索引式文章列表（归档页 / 分类页 / 标签页共用）
+//- 每行：序号 + 标题/摘要 + 分类/日期，发丝分隔线，悬停扫光
+mixin postIndexList(posts)
+  - const list = posts.data || posts
+  .post-index-list
+    each article, i in list
+      - const link = article.link || article.path
+      - const title = article.title || _p('no_title')
+      - const rawDesc = postDesc(article)
+      - const desc = rawDesc ? String(rawDesc).replace(/<[^>]*>/g, '').trim() : ''
+      - const cat = article.categories && article.categories.data && article.categories.data[0]
+      a.post-row(href=url_for(link) style=`--row-i:${i}`)
+        span.post-row-idx= String(i + 1).padStart(2, '0')
+        span.post-row-main
+          span.post-row-title= title
+          if desc
+            span.post-row-excerpt= desc
+        span.post-row-side
+          if cat
+            span.post-row-cat= cat.name
+          span.post-row-date= date(article.date, config.date_format)

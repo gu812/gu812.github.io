@@ -5,8 +5,8 @@ block content
     include ./includes/mixins/indexPostUI.pug
     +indexPostUI
   else
-    include ./includes/mixins/postCardGrid.pug
+    include ./includes/mixins/postIndexList.pug
     #tag
-      .article-sort-title= _p('page.tag') + ' - ' + page.tag
-      +postCardGrid(page.posts)
+      .article-sort-title= _p('page.tag') + ' — ' + page.tag
+      +postIndexList(page.posts)
       include includes/pagination.pug

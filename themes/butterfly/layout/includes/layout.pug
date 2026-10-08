@@ -3,6 +3,7 @@
 - page.aside = globalPageType === 'archive' ? theme.aside.display.archive: globalPageType === 'category' ? theme.aside.display.category : globalPageType === 'tag' ? theme.aside.display.tag : globalPageType === 'post' ? theme.aside.display.post : page.aside
 - var hideAside = !theme.aside.enable || page.aside === false ? 'hide-aside' : ''
 - var pageType = globalPageType === 'post' ? 'post' : 'page'
+- if (globalPageType === 'archive' || globalPageType === 'category' || globalPageType === 'tag') pageType += ' glow-page'
 - pageType = page.type ? pageType + ' type-' + page.type : pageType
 
 doctype html

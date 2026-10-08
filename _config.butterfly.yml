@@ -66,8 +66,8 @@ inject:
     - <script src="/js/morph-cards.js" defer></script>
     # 文章页标题 glitch 归位：脚本自身只在文章页初始化
     - <script src="/js/post-minimal.js?v=5" defer></script>
-    # 分页面棱镜 banner + 开屏粒子标题：脚本自身只在分页面初始化
-    - <script src="/js/prism-banner.js" defer></script>
+    # 分页面辉光三角 hero + 开屏粒子标题：脚本自身只在分页面初始化
+    - <script src="/js/glow-banner.js" defer></script>
     - <script src="/js/page-intro.js" defer></script>
 
 # ------------------------------------------------------------

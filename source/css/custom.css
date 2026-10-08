@@ -459,28 +459,288 @@ html.globe-home body {
 
 
 /* ============================================================
-   分页面外壳：棱镜 banner + 开屏粒子 + 左侧窄栏
+   分页面外壳：辉光三角徽章 + 深色编辑索引页 + 开屏粒子
    ============================================================ */
 
-/* --- 棱镜 banner：黑底，canvas 铺满，标题压在上层 --- */
-#page-header.prism-banner {
-  background: #050505 !important;
+/* --- 整页深色：归档/分类/标签页（#body-wrap.glow-page） --- */
+body:has(#body-wrap.glow-page) {
+  background: #0a0a0a;
 }
 
-#prism-canvas {
+#body-wrap.glow-page {
+  background: #0a0a0a;
+}
+
+#body-wrap.glow-page #content-inner {
+  background: transparent;
+}
+
+/* 主题给主栏白卡（.layout > div:first-child），深色页撤掉 */
+#body-wrap.glow-page #content-inner.layout > div:first-child:not(.nc) {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* --- 辉光三角徽章：收敛为页头，不再占满首屏 --- */
+#page-header.glow-hero {
+  height: 52vh !important;
+  min-height: 400px;
+  background: #000 !important;
+  overflow: hidden;
+}
+
+#glow-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-#page-header.prism-banner #page-site-info {
-  /* 标题先撤掉，只留三角动效；保留 DOM 供粒子开屏取文字 */
+/* 页标题：三角下方的编辑式题字（保留 DOM 供粒子开屏取文字） */
+#page-header.glow-hero #page-site-info {
+  position: absolute;
+  top: auto; /* 主题默认 top: 200px，会与 bottom 同时生效把标题拉走 */
+  left: 0;
+  right: 0;
+  bottom: 26px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#page-header.glow-hero #site-title {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
+#page-header.glow-hero.intro-running #page-site-info {
+  opacity: 0;
+}
+
+/* --- 目录索引式文章列表 --- */
+.glow-page .article-sort-title {
+  margin: 10px 0 6px;
+  padding: 0 0 14px;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.38);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* 主题时间线的圆点与竖线 */
+.glow-page .article-sort-title::before,
+.glow-page .article-sort-title::after {
   display: none;
 }
 
-#page-header.prism-banner.intro-running #page-site-info {
-  opacity: 0;
+.post-index-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-row {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  padding: 26px 10px 26px 4px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  animation: postRowIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.06s * var(--row-i, 0));
+}
+
+@keyframes postRowIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 悬停扫光：左侧香槟金短棒 + 微位移，不引起重排 */
+.post-row::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  background: #d8ba78;
+  transform: translateY(-50%);
+  transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.post-row:hover::before {
+  height: 58%;
+}
+
+.post-row-idx {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.28);
+  font-variant-numeric: tabular-nums;
+  flex: 0 0 auto;
+}
+
+.post-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.post-row-title {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+}
+
+.post-row:hover .post-row-title {
+  transform: translateX(8px);
+  color: #fff;
+}
+
+.post-row-excerpt {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.42);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.post-row:hover .post-row-excerpt {
+  transform: translateX(8px);
+}
+
+.post-row-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.post-row-cat {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(216, 186, 120, 0.85);
+}
+
+.post-row-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.34);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- 深色侧栏 --- */
+.glow-page #aside-content .card-widget {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.glow-page #aside-content .card-widget,
+.glow-page #aside-content .card-widget a,
+.glow-page #aside-content .card-widget .item-headline,
+.glow-page #aside-content .card-widget span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.glow-page #aside-content .card-widget a:hover {
+  color: #d8ba78;
+}
+
+/* --- 深色分页器 --- */
+.glow-page #pagination {
+  margin-top: 34px;
+}
+
+.glow-page #pagination a,
+.glow-page #pagination .page-number {
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+.glow-page #pagination a:hover,
+.glow-page #pagination .page-number.current {
+  color: #0a0a0a;
+  background: #d8ba78;
+  border-color: #d8ba78;
+}
+
+/* --- 深色页脚 --- */
+.glow-page #footer {
+  background: transparent;
+}
+
+.glow-page #footer,
+.glow-page #footer a {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+/* --- 移动端：索引行改纵向堆叠 --- */
+@media (max-width: 768px) {
+  #page-header.glow-hero {
+    height: 44vh !important;
+    min-height: 320px;
+  }
+
+  #page-header.glow-hero #site-title {
+    font-size: 20px;
+  }
+
+  .post-row {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 20px 4px;
+  }
+
+  .post-row-idx {
+    display: none;
+  }
+
+  .post-row-side {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 14px;
+    width: 100%;
+  }
+}
+
+/* 动效降级：去掉入场动画与悬停位移 */
+@media (prefers-reduced-motion: reduce) {
+  .post-row {
+    animation: none;
+  }
+
+  .post-row:hover .post-row-title,
+  .post-row:hover .post-row-excerpt {
+    transform: none;
+  }
+
+  .post-row::before {
+    transition: none;
+  }
 }
 
 /* --- 开屏粒子 intro：全屏黑幕，JS 接管后淡出移除；
