@@ -180,6 +180,26 @@
   font-size: 13px;
 }
 
+/* 版权卡里的图标和链接：主题蓝改为墨色，悬停香槟金 */
+#post.post-minimal .post-copyright i,
+#post.post-minimal .post-copyright a {
+  color: rgba(28, 26, 23, .55);
+  transition: color .25s ease;
+}
+
+#post.post-minimal .post-copyright a:hover {
+  color: #a68430;
+}
+
+/* 版权卡标签（文章作者/文章链接/版权声明）与右上 © 图标 */
+#post.post-minimal .post-copyright .post-copyright-meta {
+  color: rgba(28, 26, 23, .62);
+}
+
+#post.post-minimal .post-copyright::before {
+  color: rgba(28, 26, 23, .3);
+}
+
 #post.post-minimal .tag_share {
   max-width: 680px;
   margin: 1.2em auto 0;

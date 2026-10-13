@@ -7,6 +7,26 @@
 
 /* ---------- 1. 首页星网导航 hero ---------- */
 
+/* 页脚：主题默认主题蓝大横条，全站换成暖黑，贴近黑白 + 香槟金基调 */
+#footer {
+  background-color: #1c1a17;
+}
+
+#footer,
+#footer a {
+  color: rgba(247, 244, 237, 0.55);
+}
+
+#footer a:hover {
+  color: #d8ba78;
+}
+
+/* 全局按钮底色变量：主题蓝 → 暖黑 / 深香槟金（右侧浮动按钮等） */
+:root {
+  --btn-bg: #1c1a17;
+  --btn-hover-color: #a68430;
+}
+
 /* 首页隐藏 Butterfly 自带的顶部 banner（导航菜单保留，压在 hero 上面）。
    globe-home 这个 class 由 inject.head 里的内联脚本在渲染前加到 <html> 上 */
 html.globe-home #page-header.full_page {
