@@ -467,6 +467,11 @@ body:has(#body-wrap.glow-page) {
   background: #0a0a0a;
 }
 
+/* 深色页滚动条：默认亮模式变量是主题蓝，覆盖为暗色模式的灰 */
+html:has(#body-wrap.glow-page) {
+  --scrollbar-color: #525252;
+}
+
 #body-wrap.glow-page {
   background: #0a0a0a;
 }
