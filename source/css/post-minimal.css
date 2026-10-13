@@ -225,55 +225,6 @@
   color: #b89b5e;
 }
 
-/* 上一篇 / 下一篇：极简双链 */
-#post.post-minimal #pagination.pagination-post {
-  display: flex;
-  gap: 16px;
-  max-width: 680px;
-  margin: 3em auto 0;
-  padding: 0 22px;
-}
-
-#post.post-minimal #pagination.pagination-post .pagination-related {
-  flex: 1;
-  padding: 14px 0;
-  border-top: 1px solid rgba(28, 26, 23, .14);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  color: rgba(28, 26, 23, .55);
-  text-align: left;
-}
-
-#post.post-minimal #pagination.pagination-post .pagination-related .cover {
-  display: none; /* 不要封面缩略图 */
-}
-
-#post.post-minimal #pagination.pagination-post .info-1 .info-item-1 {
-  color: rgba(28, 26, 23, .38);
-  font-size: 12px;
-  letter-spacing: .12em;
-}
-
-#post.post-minimal #pagination.pagination-post .info-1 .info-item-2 {
-  margin-top: 4px;
-  color: #262320;
-  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
-  font-size: 15px;
-}
-
-#post.post-minimal #pagination.pagination-post .info-2 {
-  display: none; /* 不要摘要 */
-}
-
-#post.post-minimal #pagination.pagination-post .pagination-related:hover {
-  background: transparent;
-}
-
-#post.post-minimal #pagination.pagination-post .pagination-related:hover .info-item-2 {
-  color: #b89b5e;
-}
-
 /* ---------- 评论区容器：窄栏对齐 ---------- */
 #post.post-minimal #post-comment,
 #post.post-minimal #comments {
@@ -293,8 +244,4 @@
     font-size: 16px;
   }
 
-  #post.post-minimal #pagination.pagination-post {
-    flex-direction: column;
-    gap: 0;
-  }
 }
