@@ -3,7 +3,6 @@
    0. 设计变量（颜色只从这里取，别再写裸色值）
    1. 首页星网导航 hero（Vanta GLOBE，结构由 js/globe-hero.js 创建）
    2. 全站页面转场（View Transitions）
-   3. 想法页时间线（/thoughts/）
    ============================================================ */
 
 /* ============================================================
@@ -11,7 +10,7 @@
 
    两套皮肤，别混用：
      深色（索引/浏览）—— 首页 + 归档 + 分类 + 标签
-     亮色（阅读）      —— 文章 + 关于 + 友链 + 想法
+     亮色（阅读）      —— 文章 + 关于 + 友链
 
    深色底一律用 --ink-*，亮色底一律用 --paper*，
    金色只做点缀，正文里不要大面积铺。
@@ -215,52 +214,11 @@ html.globe-home body {
   navigation: auto;
 }
 
-/* ---------- 3. 想法页时间线（/thoughts/，亮色纸面） ---------- */
-.thoughts-timeline {
-  position: relative;
-  margin: 20px 0;
-  padding-left: 24px;
-  border-left: 2px solid var(--paper-line);
-}
-
-.thought-item {
-  position: relative;
-  margin-bottom: 20px;
-  padding: 14px 18px;
-  border-radius: 10px;
-  background: var(--paper-card);
-  box-shadow: 0 2px 10px rgba(28, 26, 23, .06);
-}
-
-.thought-item::before {
-  content: '';
-  position: absolute;
-  left: -31px;
-  top: 22px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 3px var(--paper);
-}
-
-.thought-item .thought-date {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--gold-dim);
-  font-size: 13px;
-  letter-spacing: 1px;
-}
-
-.thought-item .thought-content {
-  line-height: 1.8;
-}
-
 /* ============================================================
-   4. 亮色独立页面（关于 / 友链 / 想法）
+   3. 亮色独立页面（关于 / 友链）
 
    跟文章页同一套「阅读」皮肤：暖白纸面 + 衬线标题 + 去掉外层白卡。
-   三者都属于 page 类型且没有 glow-page class（索引类才有）。
+   它们都属于 page 类型且没有 glow-page class（索引类才有）。
    ============================================================ */
 /* 首页也是 page 类型，但整屏是星网 hero，别给它铺纸色 */
 html:not(.globe-home) #body-wrap.page:not(.glow-page) {
@@ -876,6 +834,15 @@ html:has(#body-wrap.glow-page) {
 
 .glow-page .category-list-item:hover::before {
   border-color: var(--gold) !important;
+}
+
+/* --- 空分类页提示（scripts/empty-categories.js 生成的占位页） --- */
+.glow-page .category-empty-tip {
+  margin: 0;
+  padding: 28px 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 14px;
+  letter-spacing: 0.08em;
 }
 
 /* --- 深色侧栏 --- */

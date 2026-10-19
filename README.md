@@ -13,10 +13,9 @@ _config.yml                 站点配置（标题 / 网址 / 主题选择）
 _config.butterfly.yml       主题配置（覆盖式，只写要改的项，带中文注释）
 themes/butterfly/           主题副本，已改造 —— 升级前先看「主题改造」一节
 scaffolds/                  hexo new 用的模板
-scripts/thoughts.js         自定义生成器：把想法数据渲染成 /thoughts/
+scripts/empty-categories.js   空分类占位页（还没文章的分类也不会 404）
 source/
   _posts/                   文章
-  _data/thoughts.yml        想法数据
   _data/link.yml            友链数据
   about/ link/ tags/ categories/ 404.md    各独立页面
   css/                      自定义样式（custom.css / post-minimal.css）
@@ -35,8 +34,12 @@ npx hexo new post "文章标题"
 # 编辑 source/_posts/文章标题.md
 ```
 
-front-matter 里的 `categories` 决定它出现在哪个分类页。想上首页星网节点，就用现有的
-`旅行` / `成长` / `安利` 三个分类之一。
+front-matter 里的 `categories` 决定它出现在哪个分类页。首页星网上的节点对应
+`成长` / `生活` 两个分类，分类名写对了节点才有页面可跳。
+
+> 分类还没有文章时，`scripts/empty-categories.js` 会补一个占位页（提示「还没有文章」），
+> 所以不必为了首页节点先写占位文章。写出第一篇后占位页自动被真实列表替换。
+> 新增导航分类时，记得把这个分类名加到该脚本的 `NAV_CATEGORIES` 里。
 
 ### 新建页面（如友情链接页）
 
@@ -44,18 +47,6 @@ front-matter 里的 `categories` 决定它出现在哪个分类页。想上首�
 npx hexo new page links
 # 编辑 source/links/index.md
 ```
-
-### 想法（/thoughts/）
-
-不用写文章，直接编辑 `source/_data/thoughts.yml`，加一条：
-
-```yaml
-- date: 2026-09-26
-  content: 你的想法内容
-```
-
-push 后自动出现在 `/thoughts/` 时间线上。页面按日期倒序，所以写在哪里都行。
-生成逻辑在 `scripts/thoughts.js`（自己排序 + 转义 HTML，支持多行内容）。
 
 ### 友链
 
@@ -142,7 +133,6 @@ npx hexo server --draft
 | 星网颜色和地球仪大小 | 同文件 `VANTA_OPTIONS` |
 | 全站配色 / 动效样式 | `source/css/custom.css` |
 | 文章页排版 | `source/css/post-minimal.css` |
-| 想法数据 | `source/_data/thoughts.yml` |
 | 友链数据 | `source/_data/link.yml` |
 
 ## 换封面图
@@ -162,9 +152,20 @@ cover: /img/xxx.jpg
 注意：文章页现在是极简排版，`post.pug` 里把 `top_img` 强制设成了 `false`，
 所以文章页不会显示封面大图，`cover` 目前只影响列表卡片。
 
-## 分类占位文章
+## 分类与首页节点
 
-`source/_posts/` 下的 `travel-example.md` / `growth-example.md` / `anli-example.md`
-是「旅行 / 成长 / 安利」三个分类的占位文章（让首页星网节点有页面可跳）。
-正式写作时直接改写它们的内容，或删掉后用 `npx hexo new post` 写新文章，
-但记得在 front-matter 里写 `categories: 旅行` 之类的分类，否则首页节点会跳空。
+首页星网节点的分类配置在两处，改的时候要一起改：
+
+| 内容 | 文件 |
+| --- | --- |
+| 节点文字、链接、屏幕位置 | `source/js/globe-hero.js` 的 `NAV_ITEMS` |
+| 空分类占位页的名单 | `scripts/empty-categories.js` 的 `NAV_CATEGORIES` |
+
+目前只有「成长」和「生活」两个内容分类，都还没有文章。写第一篇时在 front-matter 里写：
+
+```yaml
+categories:
+  - 生活
+```
+
+分类页会自动从占位页变成真实列表，不需要改代码。

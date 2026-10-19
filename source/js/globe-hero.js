@@ -20,12 +20,10 @@
   /* ---------------- 配置区 ---------------- */
 
   var NAV_ITEMS = [
-    { label: '归档',   href: '/archives/',        tx: 0.16, ty: 0.20 },
-    { label: '旅行',   href: '/categories/旅行/', tx: 0.40, ty: 0.30 },
-    { label: '成长',   href: '/categories/成长/', tx: 0.18, ty: 0.46 },
-    { label: '安利',   href: '/categories/安利/', tx: 0.42, ty: 0.58 },
-    { label: '想法',   href: '/thoughts/',        tx: 0.15, ty: 0.72 },
-    { label: '关于我', href: '/about/',           tx: 0.38, ty: 0.84 }
+    { label: '归档',   href: '/archives/',          tx: 0.16, ty: 0.24 },
+    { label: '成长',   href: '/categories/成长/',   tx: 0.40, ty: 0.38 },
+    { label: '生活',   href: '/categories/生活/',   tx: 0.18, ty: 0.58 },
+    { label: '关于我', href: '/about/',             tx: 0.38, ty: 0.76 }
   ];
   var MIN_SEPARATION = 110; // 节点间最小屏幕距离（px），防止挤在一起
 

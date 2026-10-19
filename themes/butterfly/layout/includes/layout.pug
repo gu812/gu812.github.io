@@ -5,7 +5,7 @@
 - var pageType = globalPageType === 'post' ? 'post' : 'page'
 //- 皮肤分派：深色 = 索引/浏览，亮色 = 阅读。
 //- 注意 /tags/、/categories/ 的 layout 是 page，但它们本质是索引页，所以看 page.type
-- var isIndexSkin = ['archive', 'category', 'tag'].includes(globalPageType) || ['tags', 'categories'].includes(page.type)
+- var isIndexSkin = ['archive', 'category', 'tag'].includes(globalPageType) || ['tags', 'categories', 'category-empty'].includes(page.type)
 - if (isIndexSkin) pageType += ' glow-page'
 - pageType = page.type ? pageType + ' type-' + page.type : pageType
 
