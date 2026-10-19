@@ -1,7 +1,11 @@
 extends includes/layout.pug
 
 block content
-  - const noCardLayout = ['shuoshuo', '404'].includes(page.type) ? 'nc' : ''
+  //- YAML 里写 type: 404 会被解析成数字 404，统一转字符串再比较
+  - const pageTypeStr = String(page.type ?? '')
+  - const noCardLayout = ['shuoshuo', '404'].includes(pageTypeStr) ? 'nc' : ''
+  //- 404 保留自己的 title，用来当作页面上那个大号「404」
+  - const hidePageTitle = pageTypeStr === 'shuoshuo'
   - var commentsJsLoad = false
 
   mixin commentLoad
@@ -10,7 +14,7 @@ block content
       !=partial('includes/third-party/comments/index', {}, {cache: true})
 
   #page(class=noCardLayout)
-    if top_img === false && page.title
+    if top_img === false && page.title && !hidePageTitle
       .page-title= page.title
 
     case page.type

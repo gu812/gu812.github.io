@@ -93,10 +93,20 @@ npx hexo server --draft
 | `source/css/custom.css` | 全站 | 墨金配色、首页 `globe-home` 布局、列表页 `glow-page` 深色布局、想法时间线、卡片网格 |
 | `source/css/post-minimal.css` | 文章页 | 暖白纸面 + 衬线正文 + 大号宽字距标题的极简排版 |
 
-配色约定：
+配色约定（两套皮肤，别混用）：
 
-- 首页和列表页：暖黑 `#0e0d0b` + 香槟金 `#d6cfc4`
-- 文章页：暖白纸面 `#faf7f2`，金色 `#d8ba78` 只做点缀
+| 皮肤 | 用在哪里 | 底色 |
+| --- | --- | --- |
+| 深色（浏览） | 首页、归档、分类、标签（含总览页） | `--ink` / `--ink-deep` |
+| 亮色（阅读） | 文章、关于、友链、想法、404 | `--paper` |
+
+所有颜色都在 `custom.css` 开头的 `:root` 里定义成变量（`--ink-*` / `--paper-*` / `--gold-*`），
+**新写样式请用变量，不要再写裸色值**，否则两套皮肤一起改的时候会漏。
+
+皮肤怎么分：`layout.pug` 里的 `isIndexSkin` 一个变量说了算——
+归档/分类/标签这类生成器页面，加上 `page.type` 是 `tags` / `categories` 的总览页，
+都认定为「索引」走深色；其余都是「阅读」走亮色。`header/index.pug` 直接复用这个变量，
+新增页面类型时只改一处。
 
 首页是整屏 hero，**文章列表和页脚都被隐藏**，导航栏和右下角悬浮按钮也隐藏（纯净模式）。
 实现方式：`_config.butterfly.yml` 的 `inject.head` 里有段内联脚本，在渲染前给 `<html>`
@@ -113,9 +123,10 @@ npx hexo server --draft
 | --- | --- |
 | `layout/archive.pug` `category.pug` `tag.pug` | 原来的时间线列表换成卡片网格 |
 | `layout/includes/mixins/postIndexList.pug` `postCardGrid.pug` | **新增**，卡片网格的实现 |
-| `layout/includes/header/index.pug` | 文章页不显示顶部大图；列表页用辉光三角 canvas + 粒子开屏替代原来蓝色 banner |
-| `layout/includes/layout.pug` | 文章页关闭侧栏；列表页给 body 加 `glow-page` |
+| `layout/includes/header/index.pug` | 文章页不显示顶部大图；索引页用辉光三角 canvas + 粒子开屏替代原来蓝色 banner；阅读类页面直接不要 banner |
+| `layout/includes/layout.pug` | 文章页关闭侧栏；计算 `isIndexSkin`，只给索引页加 `glow-page` 深色皮肤 |
 | `layout/includes/header/post-info.pug` | 文章页头部信息极简化 |
+| `layout/page.pug` | `type` 转字符串再比较（YAML 里 `type: 404` 会被解析成数字）；shuoshuo 不输出页面标题 |
 | `layout/post.pug` | 去掉上下篇引导和相关文章推荐 |
 
 因此**不能直接 `npm update` 升级主题**，得对照新版手工合并上面这几个 pug 文件。
@@ -126,6 +137,7 @@ npx hexo server --draft
 | --- | --- |
 | 站点标题 / 副标题 / 作者 | `_config.yml` |
 | 菜单、页脚、inject 注入、侧栏 | `_config.butterfly.yml` |
+| 主题主色（金色体系，一次解决蓝色残留） | 同文件 `theme_color` |
 | 首页星网导航节点的位置和链接 | `source/js/globe-hero.js` 顶部 `NAV_ITEMS` |
 | 星网颜色和地球仪大小 | 同文件 `VANTA_OPTIONS` |
 | 全站配色 / 动效样式 | `source/css/custom.css` |

@@ -42,6 +42,28 @@ menu:
 #   post_page: /img/error.jpg
 
 # ------------------------------------------------------------
+# 主题主色
+# ------------------------------------------------------------
+# 统一成墨金。不配的话主题默认是蓝 #49B1F5，链接 / 引用块 / 分页器 / 代码块
+# 全都会冒蓝色，跟黑金基调打架。
+# 正文链接颜色不在这里配：亮色底和深色底需要不同的金，否则一边会看不清，
+# 交给 source/css/custom.css 按皮肤分别覆盖。
+theme_color:
+  enable: true
+  main: "#d8ba78"                                        # 金色主色
+  paginator: "#d8ba78"                                    # 分页器当前页
+  button_hover: "#a68430"                                 # 按钮悬停（深金）
+  text_selection: "#d8ba78"                               # 选中文字底色
+  meta_color: "#8c8478"                                   # 元信息文字
+  hr_color: "#d8ba78"
+  code_foreground: "#a68430"
+  code_background: "rgba(28, 26, 23, .05)"
+  toc_color: "#b89b5e"
+  blockquote_padding_color: "#d8ba78"                     # 引用块左边框
+  blockquote_background_color: "rgba(216, 186, 120, .08)" # 引用块底色（淡金）
+  scrollbar_color: "#b89b5e"
+
+# ------------------------------------------------------------
 # 头像（首页右侧信息卡 & 关于页）
 # 【换图指南】把图片放到 source/img/avatar.png，然后改成：
 # avatar:

@@ -11,7 +11,8 @@ if !theme.disable_top_img && page.top_img !== false
       //- 文章页走极简排版（.post-minimal），不显示顶部大 banner
       - top_img = false
     when 'page'
-      - top_img = page.top_img || theme.default_top_img
+      //- 独立页面（关于/友链/想法）跟文章页一样属于「阅读」，不做 banner
+      - top_img = page.top_img ? returnTopImg(page.top_img) : false
     when 'tag'
       - top_img = theme.tag_per_img && theme.tag_per_img[page.tag] || returnTopImg(theme.tag_img)
     when 'category'
@@ -23,8 +24,10 @@ if !theme.disable_top_img && page.top_img !== false
     default
       - top_img = page.top_img || theme.default_top_img
 
-  //- 分页面（归档/分类/标签/普通页）：辉光三角 hero 替代蓝色大图
-  if globalPageType === 'archive' || globalPageType === 'category' || globalPageType === 'tag' || globalPageType === 'page'
+  //- 索引类页面（归档/分类/标签及其总览页）：辉光三角 hero 替代蓝色大图。
+  //- isIndexSkin 在 layout.pug 里算好，这里直接用，避免两处条件漂移；
+  //- 关于/友链/想法这些阅读型页面不在其中，保持亮色纸面
+  if isIndexSkin
     - top_img = 'glow'
 
   if top_img === 'glow'

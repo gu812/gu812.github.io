@@ -1,12 +1,12 @@
 /* ============================================================
    文章页极简排版（.post-minimal）
    参考 Kit Langton "OpenCode Reloaded (light mode)"：Typographic / Minimal
-   暖白纸面 + 衬线正文 + 大号宽字距标题；金色 #d8ba78 仅点缀；无渐变
+   暖白纸面 + 衬线正文 + 大号宽字距标题；金色 var(--gold) 仅点缀；无渐变
    ============================================================ */
 
 /* ---------- 纸面 ---------- */
 #body-wrap.post {
-  background: #faf7f2;
+  background: var(--paper);
 }
 
 /* 去掉文章页外层白卡（.layout > div:first-child 的 cardHover），内容直接躺在纸面上 */
@@ -39,7 +39,7 @@
 
 #post.post-minimal #post-info .post-title {
   margin: 0;
-  color: #1c1a17;
+  color: var(--paper-ink);
   font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
   font-size: clamp(1.75rem, 4.2vw, 2.5rem);
   font-weight: 700;
@@ -67,7 +67,7 @@
 }
 
 #post.post-minimal #post-info a.post-minimal-meta-cat:hover {
-  color: #b89b5e;
+  color: var(--gold-dim);
 }
 
 /* ---------- 正文 ---------- */
@@ -78,7 +78,7 @@
   background: transparent;
   border-radius: 0;
   box-shadow: none;
-  color: #262320;
+  color: var(--paper-ink-soft);
   font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
   font-size: 17px;
   line-height: 1.9;
@@ -95,7 +95,7 @@
   margin: 2em 0 .9em;
   padding-left: 0;
   border-left: none;
-  color: #1c1a17;
+  color: var(--paper-ink);
   font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
   font-weight: 700;
   line-height: 1.5;
@@ -117,20 +117,20 @@
 
 /* 链接：金色点缀 + 下划线保证可读 */
 #post.post-minimal #article-container a {
-  color: #b89b5e;
+  color: var(--gold-dim);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 #post.post-minimal #article-container a:hover {
-  color: #d8ba78;
+  color: var(--gold);
 }
 
 /* 引用：金色左边线 */
 #post.post-minimal #article-container blockquote {
   margin: 1.6em 0;
   padding: .2em 0 .2em 1.1em;
-  border-left: 2px solid #d8ba78;
+  border-left: 2px solid var(--gold);
   background: transparent;
   color: rgba(38, 35, 32, .72);
 }
@@ -153,7 +153,7 @@
   padding: 2px 6px;
   border-radius: 4px;
   background: rgba(28, 26, 23, .06);
-  color: #262320;
+  color: var(--paper-ink-soft);
   font-size: .88em;
 }
 
@@ -188,7 +188,7 @@
 }
 
 #post.post-minimal .post-copyright a:hover {
-  color: #a68430;
+  color: var(--gold-dark);
 }
 
 /* 版权卡标签（文章作者/文章链接/版权声明）与右上 © 图标 */
@@ -220,9 +220,9 @@
 }
 
 #post.post-minimal .post-meta__tag-list a.post-meta__tags:hover {
-  border-color: #d8ba78;
+  border-color: var(--gold);
   background: transparent;
-  color: #b89b5e;
+  color: var(--gold-dim);
 }
 
 /* ---------- 评论区容器：窄栏对齐 ---------- */
